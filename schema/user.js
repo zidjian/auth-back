@@ -41,10 +41,10 @@ UserSchema.methods.createAccessToken = async function () {
 };
 
 UserSchema.methods.refreshAccessToken = async function () {
-    const refreshToken = generateAccessToken(getUserInfo(this));
+    const refreshToken = refreshAccessToken(getUserInfo(this));
 
     try {
-        await new Token({ token: refreshToken });
+        await new Token({ token: refreshToken }).save();
 
         return refreshToken;
     } catch (error) {
