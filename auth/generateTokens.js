@@ -1,11 +1,7 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 function sign(payload, isAccessToken) {
-    console.log(
-        "sign",
-        payload,
-        isAccessToken
-    );
     return jwt.sign(
         payload,
         isAccessToken

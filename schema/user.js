@@ -40,7 +40,7 @@ UserSchema.methods.createAccessToken = async function () {
     return generateAccessToken(getUserInfo(this));
 };
 
-UserSchema.methods.refreshAccessToken = async function () {
+UserSchema.methods.createRefreshAccessToken = async function () {
     const refreshToken = refreshAccessToken(getUserInfo(this));
 
     try {

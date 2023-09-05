@@ -22,10 +22,11 @@ router.post("/", async (req, res) => {
             const payload = verifyRefeshToken(found.token);
 
             if (payload) {
-                const newAccessToken = generateAccessToken(payload);
-                console.log("hola", newAccessToken);
-                
-                res.status(200).send(jsonResponse(200, { newAccessToken }));
+                const accessToken = generateAccessToken(
+                    getUserInfo(payload)
+                );
+
+                res.json(jsonResponse(200, { accessToken }));
             } else {
                 res.status(401).send(
                     jsonResponse(401, { error: "Unauthorized2" })
